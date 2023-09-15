@@ -7,8 +7,6 @@ class Build_table
      
 
     def  create_chess_table()
-
-        hash_matrix = {}
     
         (0..7).each do |row|
             hash_matrix[row] = []
@@ -20,9 +18,13 @@ class Build_table
     
     fillMatrix(hash_matrix)
     
-    
-    
     end
+
+    def getMatrix() 
+        create_chess_table()
+        return @hash_matrix
+    end
+
     
     def fillMatrix(hash_matrix)
      
@@ -58,14 +60,21 @@ class Build_table
             hash_matrix[1][i] = "p"
         end
     
-    
-       for i in 0..7 do 
-        for j in 0..7 do
-            print "#{hash_matrix[i][j]} "
-        end
-        puts "\n"
+
+        print "  "
+        ('a'..'h').each { |columna| print "#{columna} " }
+        puts
         
-       end
+        (0..7).each do |fila|
+          print "#{fila} "
+          
+          (0..7).each do |columna|
+            print "#{hash_matrix[fila][columna]} "
+          end
+          
+          puts
+        end
+        
     
        
       
