@@ -185,7 +185,28 @@ class Chess_game
          end
 
               
-            #when  "B"
+              
+        when  "B"
+          if hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] == "B" 
+            bishops_object = Bishops.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
+            if bishops_object.move(hash_matrix)
+                 if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "*"
+                  hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                  hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "B"
+                   @chess_table.print_table(hash_matrix)
+                 elsif hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "P" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "R" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "N" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "B" &&hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "Q" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "K"     
+                  hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                  hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "B"
+                  @chess_table.print_table(hash_matrix)
+                 else
+                  puts "invalid move"
+                 end
+                else puts "invalid move"
+                  @chess_table.print_table(hash_matrix)  
+            end
+       else  print "invalid move"  
+       end
+
         end
         end
      

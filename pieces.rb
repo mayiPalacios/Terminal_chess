@@ -150,11 +150,26 @@ end
 
 
   class Bishops < Piece
-    def move
-     
+    def move(hash_matrix)
+   if (@current_row.to_i - @new_row.to_i).abs == (@current_column[0] - @new_column[0]).abs    
+         if @current_row > @new_row && @current_column[0]< @new_column[0]
+          for i in (@current_row - 1).downto(@new_row + 1)
+            (@current_column[0]..@new_column[0] - 1).each do |j|
+                  puts hash_matrix[i][j] 
+                #       return false
+               #   end
+            end
+          end
+
     end
+
+
+    
+
+
+
   end
-  
-  
+end
+end
   
   
