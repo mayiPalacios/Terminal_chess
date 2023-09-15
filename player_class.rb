@@ -1,16 +1,16 @@
 class Player
-    attr_accessor :puntaje, :turno
+    attr_accessor :winner, :turn
   
     def initialize
-      @puntaje = 0
-      @turno = false
+      @winner = 0
+      @turn = false
     end
   end
 
   class White < Player
     def initialize
       super
-      @turno = true
+      @turn = true
     end
   end
   

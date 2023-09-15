@@ -5,6 +5,21 @@ class Build_table
        @hash_matrix = {}
     end
      
+    def print_table(hash_matrix)
+        print "  "
+        ('a'..'h').each { |columna| print "#{columna} " }
+        puts
+        
+        (0..7).each do |fila|
+          print "#{fila} "
+          
+          (0..7).each do |columna|
+            print "#{hash_matrix[fila][columna]} "
+          end
+          
+          puts
+        end
+    end
 
     def  create_chess_table()
     
