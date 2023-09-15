@@ -130,11 +130,11 @@ class ChessGame
 
             when "q"
              
-              if hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] == "q" 
-                queen_object = Queen.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
+               if hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] == "q" 
+                queen_object = Bishops.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
                 if queen_object.move(hash_matrix)
-                  if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "K"
-                    @king_die = "K"
+                  if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "k"
+                    @king_die = "k"
                     @flag_king_die = true
            end
                      if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "*"
@@ -151,9 +151,33 @@ class ChessGame
                     else puts "invalid move"
                       @chess_table.print_table(hash_matrix)  
                 end
+                  #hasta aqui
+                  queen_object = Rook.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
+                  if queen_object.move(hash_matrix)
+                    if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "k"
+                      @king_die = "k"
+                      @flag_king_die = true
+             end
+                       if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "*"
+                        hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                        hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "Q"
+                         @chess_table.print_table(hash_matrix)
+                       elsif hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "P" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "R" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "N" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "B" &&hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "Q" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "K"     
+                        hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                        hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "Q"
+                        @chess_table.print_table(hash_matrix)
+                       else
+                        puts "invalid move"
+                       end
+                      else puts "invalid move"
+                        @chess_table.print_table(hash_matrix)  
+                  end
+
+               
+
+
            else  print "invalid move"  
            end
-
             
            
                when  "R"
@@ -220,7 +244,7 @@ class ChessGame
             
             when "Q"
               if hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] == "Q" 
-                queen_object = Queen.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
+                queen_object = Bishops.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
                 if queen_object.move(hash_matrix)
                   if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "k"
                     @king_die = "k"
@@ -240,8 +264,34 @@ class ChessGame
                     else puts "invalid move"
                       @chess_table.print_table(hash_matrix)  
                 end
+                  #hasta aqui
+                  queen_object = Rook.new(move_condition[0],move_condition[1].to_i,[column_position_array[move_condition[2]]],move_condition[3].to_i,[column_position_array[move_condition[4]]])
+                  if queen_object.move(hash_matrix)
+                    if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "k"
+                      @king_die = "k"
+                      @flag_king_die = true
+             end
+                       if hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] == "*"
+                        hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                        hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "Q"
+                         @chess_table.print_table(hash_matrix)
+                       elsif hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "P" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "R" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "N" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "B" &&hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "Q" && hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] != "K"     
+                        hash_matrix[move_condition[1].to_i][column_position_array[move_condition[2]]] = "*"
+                        hash_matrix[move_condition[3].to_i][column_position_array[move_condition[4]]] = "Q"
+                        @chess_table.print_table(hash_matrix)
+                       else
+                        puts "invalid move"
+                       end
+                      else puts "invalid move"
+                        @chess_table.print_table(hash_matrix)  
+                  end
+
+               
+
+
            else  print "invalid move"  
            end
+       
 
 
             when "N"

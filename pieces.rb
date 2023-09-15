@@ -18,46 +18,6 @@ class Piece
   end
 
 
-class Queen < Piece
-    def move(hash_matrix)
-      row_diff = (@current_row.to_i - @new_row.to_i).abs
-      col_diff = (@current_column[0] - @new_column[0]).abs
-    
-      if row_diff == col_diff || @current_row.to_i == @new_row.to_i || @current_column[0] == @new_column[0]
-       
-        if row_diff > 0
-    
-          start_row = [@current_row.to_i, @new_row.to_i].min + 1
-          end_row = [@current_row.to_i, @new_row.to_i].max - 1
-          if @current_row.to_i == @new_row.to_i
-            start_col = [@current_column[0], @new_column[0]].min + 1
-            end_col = [@current_column[0], @new_column[0]].max - 1
-            (start_col..end_col).each do |col|
-              return false if hash_matrix[@current_row.to_i][col] != "*"
-            end
-          end
-          (start_row..end_row).each do |row|
-            return false if hash_matrix[row][@current_column[0]] != "*"
-          end
-        elsif col_diff > 0
-        
-          start_col = [@current_column[0], @new_column[0]].min + 1
-          end_col = [@current_column[0], @new_column[0]].max - 1
-          (start_col..end_col).each do |col|
-            return false if hash_matrix[@current_row.to_i][col] != "*"
-          end
-        end
-      else
-     
-        return false
-      end
-    
-      true
-    end
-    
-  end
-
-
   class Rook < Piece
     def move(hash_matrix)
   
