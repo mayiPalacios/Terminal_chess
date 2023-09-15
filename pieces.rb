@@ -16,9 +16,22 @@ class Piece
   
   class Pawn < Piece
 
-    def move 
-         if @current_row 
+    def move() 
+         if @piece_letter == "P" && @current_row == 6 && @current_row - @new_row == 2 && @current_column == @current_column
+                return true
+         end
+        
+         if @piece_letter == "p" && @current_row == 1 && @new_row - @current_row == 2 && @current_column == @current_column
+            return true
+     end
+
+     if (@new_row - @current_row).abs == 1
+        return true
     end
+    
+    return false
+end
+
   end
 
   class Queen < Piece
