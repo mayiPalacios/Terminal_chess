@@ -1,8 +1,6 @@
 require './chess_game.rb'
 
 
-
-
 class Game_class 
     attr_accessor :game_state
   
@@ -16,7 +14,8 @@ class Game_class
         result = gets.chomp 
 
         if result == "chessgame"
-         puts   chess = Chess_game.new()
+         puts   game = Chess_game.new()
+         game.start_game
             
         end
 
