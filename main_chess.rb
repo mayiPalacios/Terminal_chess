@@ -19,6 +19,13 @@ class Game_class
             
         end
 
+        if result == "--help"
+        instructions_file = File.open('instructions.txt', 'r')
+         contenido = instructions_file.read
+      puts contenido
+
+        end
+
         if result == "adios"
              @game_state =true
         end
@@ -26,6 +33,9 @@ class Game_class
 
         end
         end
+
+
+        
 
 end
 

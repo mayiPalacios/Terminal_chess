@@ -1,0 +1,74 @@
+Welcome to Chess Game!
+
+Instructions:
+
+1. How to Run the Program:
+   - Open your console.
+   - Enter the following command:
+     ```
+     ruby main_chess.rb
+     ```
+
+2. Start the Game:
+   - To start the game, enter the command:
+     ```
+     chessgame
+     ```
+
+3. Exit the Game:
+   - To exit the game, enter the command:
+     ```
+     exit
+     ```
+
+4. Display Instructions:
+   - To display these instructions again, enter the command:
+     ```
+     --help
+     ```
+
+How to Play Chess Game:
+
+1. Game Setup:
+   - The console will display the chessboard, showing the positions of all the pieces.
+   - White pieces are represented by uppercase letters.
+   - Black pieces are represented by lowercase letters.
+
+2. Making a Move:
+   - To make a move, you should send a string with the following format:
+     (Piece to choose)(Starting row)(Starting column)(Destination row)(Destination column)
+   - For example, if you want to move a pawn from row 6, column a, to row 4, column a, your string would be "P6a4a".
+
+3. Valid Moves:
+   - Ensure that your moves follow the rules of regular chess.
+   - Invalid moves will be rejected.
+
+4. Ending the Game:
+   - The game ends when one of the kings is captured.
+   - You can also end the game at any time by entering "exit" in the console.
+   - You will be returned to the main menu.
+
+5. Piece Abbreviations:
+   - R: Rook
+   - N: Knight
+   - B: Bishop
+   - Q: Queen
+   - K: King
+   - P: Pawn
+
+
+  a b c d e f g h 
+0 r n b q k b n r 
+1 p p p p p p p p 
+2 * * * * * * * * 
+3 * * * * * * * * 
+4 * * * * * * * * 
+5 * * * * * * * * 
+6 P P P P P P P P 
+7 R N B Q K B N R 
+
+
+6. Enjoy the Game!
+
+Remember to play fair and follow the rules of chess. Have fun playing Chess Game!
+

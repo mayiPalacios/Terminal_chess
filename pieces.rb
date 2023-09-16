@@ -1,3 +1,5 @@
+
+
 class Piece
     attr_reader  :current_row, :current_column, :new_row, :new_column,:piece_letter
 
@@ -12,43 +14,49 @@ class Piece
     def move
       raise NotImplementedError, "Subclasses must implement this method"
     end
-  
-
     
   end
-  
-  class Pawn < Piece
 
-    def move(hash_matrix) 
-      
-         if @piece_letter == "P" && @current_row == 6 && @current_row - @new_row == 2 && @current_column == @new_column
-                return true
-         end
+
+class Queen < Piece
+    def move(hash_matrix)
+      row_diff = (@current_row.to_i - @new_row.to_i).abs
+      col_diff = (@current_column[0] - @new_column[0]).abs
+    
+      if row_diff == col_diff || @current_row.to_i == @new_row.to_i || @current_column[0] == @new_column[0]
+       
+        if row_diff > 0
+    
+          start_row = [@current_row.to_i, @new_row.to_i].min + 1
+          end_row = [@current_row.to_i, @new_row.to_i].max - 1
+          if @current_row.to_i == @new_row.to_i
+            start_col = [@current_column[0], @new_column[0]].min + 1
+            end_col = [@current_column[0], @new_column[0]].max - 1
+            (start_col..end_col).each do |col|
+              return false if hash_matrix[@current_row.to_i][col] != "*"
+            end
+          end
+          (start_row..end_row).each do |row|
+            return false if hash_matrix[row][@current_column[0]] != "*"
+          end
+        elsif col_diff > 0
         
-         if @piece_letter == "p" && @current_row == 1 && @new_row - @current_row == 2 && @current_column == @new_column
-            return true
-     end
-
-     if (@new_row - @current_row).abs == 1 && @current_column == @new_column
-      if hash_matrix[current_row[0]][current_column[0]] !="*" && (@new_row - @current_row).abs == 1 && (@current_column[0] - @new_column[0])
-        return true
-  end
-        return true
-    end
-
-    if (@new_row.to_i - @current_row.to_i).abs == 1 && (@current_column[0] - @new_column[0]).abs == 1
-      return true
-  end
-
-  
+          start_col = [@current_column[0], @new_column[0]].min + 1
+          end_col = [@current_column[0], @new_column[0]].max - 1
+          (start_col..end_col).each do |col|
+            return false if hash_matrix[@current_row.to_i][col] != "*"
+          end
+        end
+      else
+     
+        return false
+      end
     
-    return false
-end
-
+      true
+    end
+    
   end
 
-
-  
 
   class Rook < Piece
     def move(hash_matrix)
@@ -109,6 +117,37 @@ end
 
 
 
+class Pawn < Piece
+
+    def move(hash_matrix) 
+      
+         if @piece_letter == "P" && @current_row == 6 && @current_row - @new_row == 2 && @current_column == @new_column
+                return true
+         end
+        
+         if @piece_letter == "p" && @current_row == 1 && @new_row - @current_row == 2 && @current_column == @new_column
+            return true
+     end
+
+     if (@new_row - @current_row).abs == 1 && @current_column == @new_column
+      if hash_matrix[current_row[0]][current_column[0]] !="*" && (@new_row - @current_row).abs == 1 && (@current_column[0] - @new_column[0])
+        return true
+  end
+        return true
+    end
+
+    if (@new_row.to_i - @current_row.to_i).abs == 1 && (@current_column[0] - @new_column[0]).abs == 1
+      return true
+  end
+
+  
+    
+    return false
+end
+
+  end
+
+
   class Knight < Piece
     def move()
       if (@new_row.to_i - @current_row.to_i).abs == 2 && (@current_column[0] - @new_column[0]).abs == 1
@@ -124,52 +163,52 @@ end
 
 
 
-  class Queen < Piece
-    def move
-      
-     
+class Bishops < Piece
+  def move(hash_matrix)
+    if (@current_row.to_i - @new_row.to_i).abs == (@current_column[0] - @new_column[0]).abs    
+      if @current_row > @new_row
+        i = @current_row - 1
+        j = @current_column[0] + 1
+
+        while i > @new_row && j < @new_column[0]
+          if hash_matrix[i][j] != "*"
+            return false
+          end
+          i -= 1
+          j += 1
+        end
+      elsif @current_row < @new_row
+        i = @current_row + 1
+        j = @current_column[0] + 1
+
+        while i < @new_row && j < @new_column[0]
+          if hash_matrix[i][j] != "*"
+            return false
+          end
+          i += 1
+          j += 1
+        end
+      end
+      true
+    else
+      false
     end
   end
+end
 
-  class King < Piece
-    def move
-      if (@new_row.to_i - @current_row.to_i).abs == 1 && (@current_column[0] - @new_column[0]).abs == 1
-        return true
-    end
-
-    if (@new_row.to_i - @current_row.to_i).abs == 1 && @current_column[0] == @new_column[0]
+class King < Piece
+  def move
+    if (@new_row.to_i - @current_row.to_i).abs == 1 && (@current_column[0] - @new_column[0]).abs == 1
       return true
   end
 
-  if @current_row == @current_row && (@current_column[0] - @new_column[0]).abs == 1
+  if (@new_row.to_i - @current_row.to_i).abs == 1 && @current_column[0] == @new_column[0]
     return true
 end
-    
-    end
-  end
 
-
-  class Bishops < Piece
-    def move(hash_matrix)
-   if (@current_row.to_i - @new_row.to_i).abs == (@current_column[0] - @new_column[0]).abs    
-         if @current_row > @new_row && @current_column[0]< @new_column[0]
-          for i in (@current_row - 1).downto(@new_row + 1)
-            (@current_column[0]..@new_column[0] - 1).each do |j|
-                  puts hash_matrix[i][j] 
-                #       return false
-               #   end
-            end
-          end
-
-    end
-
-
-    
-
-
-
-  end
-end
+if @current_row == @current_row && (@current_column[0] - @new_column[0]).abs == 1
+  return true
 end
   
-  
+  end
+end
