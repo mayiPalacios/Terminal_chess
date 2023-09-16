@@ -206,9 +206,11 @@ class King < Piece
     return true
 end
 
-if @current_row == @current_row && (@current_column[0] - @new_column[0]).abs == 1
+if @current_row == @new_row && (@current_column[0] - @new_column[0]).abs == 1
   return true
 end
+
+return false
   
   end
 end

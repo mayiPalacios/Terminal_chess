@@ -1,4 +1,4 @@
-class Build_table 
+class CreateTable
     attr_accessor :hash_matrix
 
     def initialize()

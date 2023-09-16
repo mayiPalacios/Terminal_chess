@@ -6,7 +6,7 @@ Instructions:
    - Open your console.
    - Enter the following command:
      ```
-     ruby main_chess.rb
+     ruby maingameclass.rb
      ```
 
 2. Start the Game:

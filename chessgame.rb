@@ -1,15 +1,15 @@
-require './create_table.rb'
-require './player_class.rb'
+require './createtable.rb'
+require './player.rb'
 require './pieces.rb'
 
 
-class Chess_game
+class ChessGame
 
     attr_accessor :chess_table, :column_position_array, :hash_matrix, :king_die , :flag_king_die
 
    
     def initialize()
-        @chess_table =  Build_table.new()
+        @chess_table =  CreateTable.new()
         @column_position_array = {"a"=>0,"b"=>1,"c"=>2,"d"=>3,"e"=>4,"f"=>5,"g"=>6,"h"=>7}
         @hash_matrix = @chess_table.getMatrix()
         @king_die = ""
@@ -214,7 +214,7 @@ class Chess_game
                   else puts "invalid move"
                     @chess_table.print_table(hash_matrix)  
               end
-         else  print "invalid move"  
+            
          end
             
             

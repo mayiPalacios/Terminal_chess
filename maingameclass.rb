@@ -1,7 +1,7 @@
-require './chess_game.rb'
+require './chessgame.rb'
 
 
-class Game_class 
+class MainGameClass 
     attr_accessor :game_state
   
     def initialize(game_state)
@@ -14,7 +14,7 @@ class Game_class
         result = gets.chomp 
 
         if result == "chessgame"
-         puts   game = Chess_game.new()
+         puts   game = ChessGame.new()
          game.start_game
             
         end
@@ -39,6 +39,6 @@ class Game_class
 
 end
 
-chess = Game_class.new(false)
+chess = MainGameClass.new(false)
 
 chess.menu
